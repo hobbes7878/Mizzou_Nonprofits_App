@@ -2,8 +2,10 @@ import csv
 import glob
 import re
 
+
+
 #Point to whatever folder CSVs are in. Remember to leave "\*.csv"
-csv_files=glob.glob("C:\Dropbox\Grad School\MU\Spring 2013\Advanced Data\Test CSVs\*.csv")
+csv_files=glob.glob("C:\Dropbox\Grad School\MU\Spring 2013\Advanced Data\Non Profit Data\*.csv")
 
 #divy files for each scraper
 Balance_Sheet_CSVs =[]
@@ -63,7 +65,7 @@ for each_file in Balance_Sheet_CSVs:
                     csv_write_list.append(value_set)
 
 ### POINT TO OUTFILE ###
-    with open('C:\Dropbox\Grad School\MU\Spring 2013\Advanced Data\Test CSVs\Data\Balance_Sheet_data.csv','ab') as csvfile:
+    with open("C:\Dropbox\Pythons\j7462\Mizzou_Nonprofits_App\data\Balance_Sheet_data.csv",'ab') as csvfile:
         csv_writer=csv.writer(csvfile, delimiter=",")
 
         for csv_flat_row in csv_write_list:
@@ -74,6 +76,10 @@ for each_file in Balance_Sheet_CSVs:
                     if re.search('Change',csv_flat_row[3]):
                         continue
                     else:
+                        #Re-format accounting dollar amounts to python integers
+                        for data in csv_flat_row:
+                            if "$" in data:
+                                csv_flat_row[csv_flat_row.index(data)] = int(data.replace("(","-").replace("$","").replace(")","").replace(",",""))
                         csv_writer.writerow(csv_flat_row)
  
 ##########################################################
@@ -116,12 +122,16 @@ for each_file in Revenue_Expense_CSVs:
                     csv_write_list.append(value_set)
 
 ### POINT TO OUTFILE ###
-    with open('C:\Dropbox\Grad School\MU\Spring 2013\Advanced Data\Test CSVs\Data\Revenue_Expense_data.csv','ab') as csvfile:
+    with open("C:\Dropbox\Pythons\j7462\Mizzou_Nonprofits_App\data\Revenue_Expense_data.csv",'ab') as csvfile:
         csv_writer=csv.writer(csvfile, delimiter=",")
 
         for csv_flat_row in csv_write_list:
             if len(csv_flat_row)>3:
                 if re.search('\$',csv_flat_row[4]):
+                    #Re-format accounting dollar amounts to python integers
+                    for data in csv_flat_row:
+                        if "$" in data:
+                            csv_flat_row[csv_flat_row.index(data)] = int(data.replace("(","-").replace("$","").replace(")","").replace(",",""))
                     csv_writer.writerow(csv_flat_row)
 
 ########################################################## 
@@ -173,11 +183,15 @@ for each_file in Highest_Paid_CSVs:
                 Values_List.append(temp_list)
 
 ### POINT TO OUTFILE ###
-    with open('C:\Dropbox\Grad School\MU\Spring 2013\Advanced Data\Test CSVs\Data\Highest_Paid_data.csv','ab') as csvfile:
+    with open("C:\Dropbox\Pythons\j7462\Mizzou_Nonprofits_App\data\Highest_Paid_data.csv",'ab') as csvfile:
         csv_writer=csv.writer(csvfile, delimiter=",")
 
         for csv_flat_row in Values_List:
             if len(csv_flat_row)>3:
+                #Re-format accounting dollar amounts to python integers
+                for data in csv_flat_row:
+                    if "$" in data:
+                        csv_flat_row[csv_flat_row.index(data)] = int(data.replace("(","-").replace("$","").replace(")","").replace(",",""))
                 csv_writer.writerow(csv_flat_row)
 
 ##########################################################
@@ -229,11 +243,15 @@ for each_file in Officers_Trustees_CSVs:
                 Values_List.append(temp_list)
 
 ### POINT TO OUTFILE ###
-    with open('C:\Dropbox\Grad School\MU\Spring 2013\Advanced Data\Test CSVs\Data\Officers_Trustees_data.csv','ab') as csvfile:
+    with open("C:\Dropbox\Pythons\j7462\Mizzou_Nonprofits_App\data\Officers_Trustees_data.csv",'ab') as csvfile:
         csv_writer=csv.writer(csvfile, delimiter=",")
 
         for csv_flat_row in Values_List:
             if len(csv_flat_row)>3:
+                #Re-format accounting dollar amounts to python integers
+                for data in csv_flat_row:
+                    if "$" in data:
+                        csv_flat_row[csv_flat_row.index(data)] = int(data.replace("(","-").replace("$","").replace(")","").replace(",",""))
                 csv_writer.writerow(csv_flat_row)
 
 
@@ -241,7 +259,7 @@ for each_file in Officers_Trustees_CSVs:
 ### Remove Any Duplicates from CSV Files ### STOLEN FROM INTERWEBS
 
 ### POINT TO OUTFILE ###
-output_csv_files=glob.glob("C:\Dropbox\Grad School\MU\Spring 2013\Advanced Data\Test CSVs\Data\*.csv")
+output_csv_files=glob.glob("C:\Dropbox\Pythons\j7462\Mizzou_Nonprofits_App\data\*.csv")
 
 for outfile in output_csv_files:
     rows = csv.reader(open(outfile, "rb"))
