@@ -3,6 +3,7 @@
 {% block title %}Welcome to our webpage{% endblock %}
 
 {% block content %}
+	<table>
 	{% for line in all_line_items %}
 		<tr>
 			<td>{{line.ein}}</td>
@@ -12,5 +13,6 @@
 			<td>${{line.amount}}</td>
 		</tr>
 	{% endfor %}
+	</ul>
 
 {% endblock %}
