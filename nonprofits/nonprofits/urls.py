@@ -4,6 +4,8 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
+from balance_sheets import views
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'nonprofits.views.home', name='home'),
@@ -15,5 +17,5 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 
-    #url('^$','[view here]', name='index'),
+    url(r'^$',views.index, name='index'),
 )

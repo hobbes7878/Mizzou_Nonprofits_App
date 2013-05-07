@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to our webpage{% endblock %}
+
+{% block content %}
+	{% for line in all_line_items %}
+		<tr>
+			<td>{{line.ein}}</td>
+			<td>{{line.nonprof_name}}</td>
+			<td>{{line.category}}</td>
+			<td>{{line.fiscal_date}}</td>
+			<td>${{line.amount}}</td>
+		</tr>
+	{% endfor %}
+
+{% endblock %}
