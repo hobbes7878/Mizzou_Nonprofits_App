@@ -8,13 +8,13 @@
 {% load humanize %} 
 
 
-	<table>
+	<select>
 	{% for cat in categories %}
-		<tr>
-			<td>{{ cat.category }}</td>
-		</tr>
+		
+			<option value="{{ cat.category }}">{{ cat.category }}</option>
+
 	{% endfor %}
-	</ul>
+	</select>
 
 	<table>
 	{% for line in all_line_items %}
