@@ -2,8 +2,8 @@ from django import forms
 from balance_sheets.models import Revenue_Expense
 
 
-cat_choices=[("","Select a category")]
-year_choices=[("","Select a fiscal year")]
+cat_choices=[]
+year_choices=[]
 categories=Revenue_Expense.objects.values('category').distinct()
 years=Revenue_Expense.objects.values('fiscal_date').distinct()
 
@@ -13,7 +13,7 @@ for cat in categories:
 	cat_choices.append(choice)
 
 for year in years:
-	choice=(year['fiscal_date'], year['fiscal_date'])
+	choice=(int(year['fiscal_date']), year['fiscal_date'])
 	year_choices.append(choice)
 
 
@@ -21,5 +21,7 @@ for year in years:
 
 class category_select(forms.Form):
 	Category = forms.ChoiceField(choices=cat_choices)
-	Fiscal_Year = forms.ChoiceField(choices=year_choices)
-	Min_Amount=forms.IntegerField()
+	Start_Year = forms.ChoiceField(choices=year_choices, initial="")
+	End_Year = forms.ChoiceField(choices=year_choices, initial="2012")
+	Min_Amount=forms.IntegerField(initial=0)
+

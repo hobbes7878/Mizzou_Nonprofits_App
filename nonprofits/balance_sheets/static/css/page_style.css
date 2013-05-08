@@ -1,5 +1,6 @@
-.red_nums{
+.amounts{
 	color:blue;
+	font:bold 14px Arial, sans-serif ;
 }
 
 table, tr, td {
@@ -8,6 +9,15 @@ table, tr, td {
 	font-family: Arial, sans-serif;
 	font-size: 12px;
 
+}
+
+
+a{
+	font:italic 12px Arial, sans-serif;
+}
+
+td{
+	padding:4px;
 }
 
 h1 {

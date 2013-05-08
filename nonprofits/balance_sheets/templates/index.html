@@ -6,25 +6,32 @@
 
 <!-- Loading humanize app to format numbers -->
 {% load humanize %} 
+<div class="center">
 	<form action="." method="GET" >
 		<table>
 			{{ form.as_table }}
 
 		</table>
-			<input type="submit" value="Find">
+			<input type="submit" value="Find Nonprofits">
+</div>
 
 
-
+{% if all_line_items %}
+<div class="result_table">	
+<a href="{%url export%}" target="_blank">Export Results to CSV</a>
 	<table>
 	{% for line in all_line_items %}
 		<tr>
 			<td>{{ line.ein }}</td>
-			<td>{{ line.nonprof_name }}</td>
+			<td>{{ line.nonprof_name|upper }}</td>
 			<td>{{ line.category }}</td>
 			<td>{{ line.fiscal_date }}</td>
-			<td class="red_nums">${{ line.amount|intcomma }}</td>
+			<td class="amounts">${{ line.amount|intcomma }}</td>
 		</tr>
 	{% endfor %}
 	</ul>
+
+</div>
+{% endif %}
 
 {% endblock %}
