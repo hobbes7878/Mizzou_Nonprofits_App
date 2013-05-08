@@ -9,6 +9,14 @@
 
 
 	<table>
+	{% for cat in categories %}
+		<tr>
+			<td>{{ cat.category }}</td>
+		</tr>
+	{% endfor %}
+	</ul>
+
+	<table>
 	{% for line in all_line_items %}
 		<tr>
 			<td>{{ line.ein }}</td>
