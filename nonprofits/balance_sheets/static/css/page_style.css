@@ -4,4 +4,14 @@
 
 table, tr, td {
 	border: 1px solid black;
+	border-collapse:collapse;
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+
 }
+
+h1 {
+	font-family: Arial, sans-serif;
+	font-size: 36px;
+}
+

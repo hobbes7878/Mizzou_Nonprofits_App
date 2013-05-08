@@ -2,16 +2,24 @@ from django import forms
 from balance_sheets.models import Revenue_Expense
 
 
-choices=[("Default","Select a category")]
+cat_choices=[("","Select a category")]
+year_choices=[("","Select a fiscal year")]
 categories=Revenue_Expense.objects.values('category').distinct()
+years=Revenue_Expense.objects.values('fiscal_date').distinct()
 
 #Create choices tuples
 for cat in categories:
 	choice=(cat['category'],cat['category'])
-	choices.append(choice)
+	cat_choices.append(choice)
+
+for year in years:
+	choice=(year['fiscal_date'], year['fiscal_date'])
+	year_choices.append(choice)
+
 
 
 
 class category_select(forms.Form):
-	Category = forms.ChoiceField(choices=choices)
+	Category = forms.ChoiceField(choices=cat_choices)
+	Fiscal_Year = forms.ChoiceField(choices=year_choices)
 	Min_Amount=forms.IntegerField()

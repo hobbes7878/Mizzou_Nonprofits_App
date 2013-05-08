@@ -6,19 +6,14 @@
 
 <!-- Loading humanize app to format numbers -->
 {% load humanize %} 
-
-	<form action="." method="GET"  onchange="window.location=this.value">
+	<form action="." method="GET" >
 		<table>
 			{{ form.as_table }}
+
 		</table>
+			<input type="submit" value="Find">
 
-<!-- 	<select>
-	{% for cat in categories %}
-		
-			<option value="{{ cat.category }}">{{ cat.category }}</option>
 
-	{% endfor %}
-	</select> -->
 
 	<table>
 	{% for line in all_line_items %}
