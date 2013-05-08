@@ -7,14 +7,18 @@
 <!-- Loading humanize app to format numbers -->
 {% load humanize %} 
 
+	<form action="." method="GET"  onchange="window.location=this.value">
+		<table>
+			{{ form.as_table }}
+		</table>
 
-	<select>
+<!-- 	<select>
 	{% for cat in categories %}
 		
 			<option value="{{ cat.category }}">{{ cat.category }}</option>
 
 	{% endfor %}
-	</select>
+	</select> -->
 
 	<table>
 	{% for line in all_line_items %}
