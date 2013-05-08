@@ -3,10 +3,13 @@
     <head>
 
         <title>{% block title %}{% endblock %}</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="static/css/page_style.css">
 
     </head>
 
     <body>
+    	<h1> Missouri Non-Profits Finance Explorer</h1>
 
         {% block content %}{% endblock %}
 

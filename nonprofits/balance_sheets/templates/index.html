@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
 
-{% block title %}Welcome to our webpage{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block content %}
+
+<!-- Loading humanize app to format numbers -->
+{% load humanize %} 
+
+
 	<table>
 	{% for line in all_line_items %}
 		<tr>
-			<td>{{line.ein}}</td>
-			<td>{{line.nonprof_name}}</td>
-			<td>{{line.category}}</td>
-			<td>{{line.fiscal_date}}</td>
-			<td>${{line.amount}}</td>
+			<td>{{ line.ein }}</td>
+			<td>{{ line.nonprof_name }}</td>
+			<td>{{ line.category }}</td>
+			<td>{{ line.fiscal_date }}</td>
+			<td class="red_nums">${{ line.amount|intcomma }}</td>
 		</tr>
 	{% endfor %}
 	</ul>
