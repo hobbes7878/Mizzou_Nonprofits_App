@@ -4,8 +4,8 @@ from balance_sheets.models import Revenue_Expense
 
 cat_choices=[]
 year_choices=[]
-categories=Revenue_Expense.objects.values('category').distinct()
-years=Revenue_Expense.objects.values('fiscal_date').distinct()
+categories=Revenue_Expense.objects.values('category').distinct().order_by('category')
+years=Revenue_Expense.objects.values('fiscal_date').distinct().order_by('fiscal_date')
 
 #Create choices tuples
 for cat in categories:

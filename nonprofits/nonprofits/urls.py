@@ -18,6 +18,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^$',views.index, name='index'),
-
-    url('.',views.export_to_csv, name='export'),
+    #url('.',views.export_to_csv, name='export'),
 )
